@@ -53,7 +53,7 @@ $config = [
             // ... 模块其他配置 ...
         ],
     ],
-    'params' => $params,
+    //'params' => $params,
     'defaultRoute' => 'forum/default',
     //'defaultAction' => 'selectall',
 ];

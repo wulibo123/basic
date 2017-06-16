@@ -1,21 +1,18 @@
-
 <html>
 <head>
     <title>fdsfds</title>
 </head>
 <body>
 dsfdsklfdjsklfdsjfoidsufidsh
-<?php
-/**
- * Created by PhpStorm.
- * User: Administrator
- * Date: 2017/6/7
- * Time: 9:19
- */
-use yii\widgets\LinkPager;
-
-echo LinkPager::widget([
-    'pagination' => $pagination,
-]);?>
+<script type="text/javascript">
+        var text = document.URL;
+        var   re = /\w+\?/;
+        var result=  re.exec(text);
+        if(result=="php?")
+        {
+            //处理代码
+            //alert(1111);
+        }
+</script>
 </body>
 </html>

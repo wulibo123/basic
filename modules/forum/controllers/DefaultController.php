@@ -11,32 +11,34 @@ use yii\web\Controller;
 use yii\data\Pagination;
 
 class DefaultController extends Controller {
-    public $defaultAction='selectall';
     public $layout = false;
     function actionIndex()
     {
-        $pagination = new Pagination(['totalCount' => 100]);
-        $number = 2;
-        print($this->actionSelectall(1,2));
+        $function['aaa'] = function($array){
+            echo <<<abc
+            $array
+abc;
 
-        try
-        {
-            if($number>1)
-            {
-                throw new \Exception("Value must be 1 or below");
-            }
-            // 如果抛出异常，以下文本不会输出
-            echo '如果输出该内容，说明 $number 变量';
-        } // 捕获异常
-        catch(\Exception $e)
-        {
-            echo 'Message: ' .$e->getMessage();
+        };
+        $function['aaa']("你是我的眼");
+        echo md5(md5("123456")."rLmSOu")."<br/>";
+        $memcache = memcache_connect('localhost', 11211);
+        if ($memcache){
+            $memcache->set("str_key", "String to store in memcached");
+            $memcache->set("num_key", 123);
+            $array = Array('assoc'=>123, 345, 567);
+            //next($array);
+            //next($array);
+            echo key($array)."-------------------".current($array)."<br>";
+            $memcache->set("arr_key", $array);
+            //输出下面三行表示配置成功
+            echo var_dump($memcache->get('str_key')."成功了")."<br>";
+            echo var_dump($memcache->get('num_key'))."<br>";
+            echo var_dump($memcache->get('arr_key'))."<br>";
+        }else{
+            echo "Connection to memcached failed";   //输入这行表示没有配置成功
         }
-        return $this->render('index',['pagination'=>$pagination]);
+        return $this->render('index');
     }
 
-
-    function actionSelectall(int ...$result){
-        return array_sum($result);
-    }
 }
