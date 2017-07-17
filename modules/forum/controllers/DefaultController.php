@@ -9,18 +9,55 @@ namespace  app\modules\forum\controllers;
 
 use yii\web\Controller;
 use yii\data\Pagination;
-
 class DefaultController extends Controller {
     public $layout = false;
+
+
     function actionIndex()
     {
-        $function['aaa'] = function($array){
+        $fieldSeparator = ',';
+        header('Content-Disposition:attachment;filename="fdfds.csv"');
+        header('Cache-Control:no-cache');
+        header('Last-Modified:' . gmdate('D, d M Y H:i:s') . ' GMT');
+        echo "\"fdsfds\"{$fieldSeparator}";
+        exit();
+
+
+        $str = "http:/blog.csdn.net/zyu67/article/details/42295681";
+        $str = str_replace("http://","",$str);
+        echo $str;die;
+
+
+
+
+        $array = 'fdsfds';
+        $function['aaa'] = function($ayy) use($array){
             echo <<<abc
-            $array
+            $array; $ayy
 abc;
 
         };
-        $function['aaa']("你是我的眼");
+        $function['aaa']("dsd");die;
+        //return $this->render('index');
+       $myException = function ($exception)
+       {
+           echo "<b>Exception:</b> " , $exception->getMessage();
+       } ;
+
+        set_exception_handler($myException);
+
+        //throw new \Exception();
+
+
+        header('Access-Control-Allow-Origin:*');
+        echo  gmdate('D, d M Y H:i:s') . ' GMT';die;
+        return $this->render('index');
+
+        echo md5(sha1(123456) . 'xlhibapKW/V1L{r>!F7=XYn#RsfMJ%]6<(IG0?U-');die;
+
+        //phpinfo();
+       //var_dump(in_array([0=>"1"],['2',['1'],'4']));die;
+
         echo md5(md5("123456")."rLmSOu")."<br/>";
         $memcache = memcache_connect('localhost', 11211);
         if ($memcache){
@@ -38,7 +75,7 @@ abc;
         }else{
             echo "Connection to memcached failed";   //输入这行表示没有配置成功
         }
-        return $this->render('index');
+
     }
 
 }

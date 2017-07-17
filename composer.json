@@ -53,5 +53,12 @@
             "npm-asset-library": "vendor/npm",
             "bower-asset-library": "vendor/bower"
         }
+    },
+    "autoload":{
+        "classmap": [
+            "jimujia-framework/api/model"
+        ],
+        "files":["jimujia-framework/conf/config.inc.php"]
     }
+
 }
